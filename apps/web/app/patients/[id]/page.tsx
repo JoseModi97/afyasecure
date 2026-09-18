@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
@@ -53,7 +53,7 @@ export default function PatientChartPage() {
 
     dbService.recordAuditEvent(event);
     setLogged(true);
-  }, [patient, currentRole, currentUserName, accessCheck.allowed, logged]);
+  }, [patient, currentRole, currentUserName, accessCheck.allowed, accessCheck.reason, logged]);
 
   if (!patient) {
     return (

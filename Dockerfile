@@ -1,4 +1,4 @@
-﻿# Multi-stage Dockerfile for AfyaSecure Next.js Monorepo
+# Multi-stage Dockerfile for AfyaSecure Next.js Monorepo
 FROM node:20-alpine AS base
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
@@ -16,10 +16,11 @@ FROM base AS installer
 WORKDIR /app
 COPY --from=builder /app/out/json/ .
 COPY --from=builder /app/out/pnpm-lock.yaml ./pnpm-lock.yaml
-RUN pnpm install --frozen-lockfile
+RUN pnpm approve-builds --all && pnpm install --frozen-lockfile
 
 COPY --from=builder /app/out/full/ .
 ENV NEXT_TELEMETRY_DISABLED=1
+ENV BUILD_STANDALONE=true
 RUN pnpm turbo run build --filter=web
 
 # 3. Runner stage
