@@ -1,0 +1,8 @@
+﻿name = "afyasecure-web"
+compatibility_date = "2024-09-01"
+compatibility_flags = ["nodejs_compat"]
+pages_build_output_dir = ".next"
+
+[vars]
+ENVIRONMENT = "production"
+DATA_PROTECTION_ACT_VERSION = "Kenya-DPA-2019"
