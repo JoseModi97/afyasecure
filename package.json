@@ -7,7 +7,8 @@
     "dev": "turbo run dev",
     "lint": "turbo run lint",
     "typecheck": "turbo run typecheck",
-    "clean": "turbo run clean"
+    "clean": "turbo run clean",
+    "deploy:cf": "turbo run build --filter=web && pnpm --filter web exec wrangler pages deploy apps/web/.next --project-name=afyasecure"
   },
   "devDependencies": {
     "prettier": "^3.3.3",
